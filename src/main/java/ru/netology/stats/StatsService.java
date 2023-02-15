@@ -14,16 +14,13 @@ public class StatsService {
 
     //2. Средняя сумма продаж в месяц
     public int averSales(int[] sales) {
-        int sumCount = 0;
+        int Count = sumSales(sales);
         int countMounth = 0;
 
-        for (int curCount : sales) {
-            sumCount = sumCount + curCount;
-        }
         for (int i = 0; i < sales.length; i++) {
             countMounth++;
         }
-        int averCount = sumCount / countMounth;
+        int averCount = Count / countMounth;
         return averCount;
     }
 
@@ -54,19 +51,12 @@ public class StatsService {
     //5.Количество месяцев, в которых продажи были ниже среднего
 
     public int countMounthLessAver(int[] sales) {
-        int sumCount = 0;
-        int countMounth = 0;
+
+        int count = averSales(sales);
         int countMounthLessAver = 0;
 
         for (int curCount : sales) {
-            sumCount = sumCount + curCount;
-        }
-        for (int i = 0; i < sales.length; i++) {
-            countMounth++;
-        }
-        int averCount = sumCount / countMounth;
-        for (int curCount : sales) {
-            if (curCount < averCount) {
+            if (curCount < count) {
                 countMounthLessAver++;
             }
         }
@@ -76,19 +66,11 @@ public class StatsService {
     //6. Количество месяцев, в которых продажи были выше среднего
 
     public int countMounthMoarAver(int[] sales) {
-        int sumCount = 0;
-        int countMounth = 0;
+        int count = averSales(sales);
         int countMounthMoarAver = 0;
 
         for (int curCount : sales) {
-            sumCount = sumCount + curCount;
-        }
-        for (int i = 0; i < sales.length; i++) {
-            countMounth++;
-        }
-        int averCount = sumCount / countMounth;
-        for (int curCount : sales) {
-            if (curCount > averCount) {
+            if (curCount > count) {
                 countMounthMoarAver++;
             }
         }
